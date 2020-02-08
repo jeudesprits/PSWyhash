@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import PSWyhash
+@testable import PSWyhash
 
 final class WyHashTests: XCTestCase {
   
