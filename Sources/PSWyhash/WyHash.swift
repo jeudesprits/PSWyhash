@@ -36,10 +36,9 @@ public struct WyHash {
 extension WyHash {
   
   @inlinable
-  public func hash(data: Data) -> Data {
+  public func hash(_ data: Data) -> Data {
     data.withUnsafeBytes {
       var hash = wyhash($0.baseAddress!, UInt64($0.count), seed, secret)
-      print(hash)
       return Data(bytes: &hash, count: Self.byteCount)
     }
   }
@@ -47,13 +46,12 @@ extension WyHash {
 
 extension WyHash {
   
-  // TODO: - Убрать стандартное значение.
   @inlinable
-  public static func hash(data: Data, seed: UInt64? = nil) -> Data {
+  public static func hash(_ data: Data, seed: UInt64? = nil) -> Data {
     if let seed = seed {
-      return Self.init(seed: seed).hash(data: data)
+      return Self.init(seed: seed).hash(data)
     } else {
-      return Self.init().hash(data: data)
+      return Self.init().hash(data)
     }
   }
 }

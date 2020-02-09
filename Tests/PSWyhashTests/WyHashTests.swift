@@ -26,7 +26,7 @@ final class WyHashTests: XCTestCase {
       .forEach {
         XCTAssertEqual(
           WyHash
-            .hash(data: $0.element.key.data(using: .ascii, allowLossyConversion: true)!, seed: UInt64($0.offset))
+            .hash($0.element.key.data(using: .ascii, allowLossyConversion: true)!, seed: UInt64($0.offset))
             .hexString,
           $0.element.value
         )
